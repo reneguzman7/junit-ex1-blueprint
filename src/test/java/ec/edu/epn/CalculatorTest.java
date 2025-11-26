@@ -26,18 +26,11 @@ public class CalculatorTest {
         calculator = null;
     }
 
-    // ========== ADD TESTS ==========
-
     @Test
     void add_TwoPositiveNumbers_ReturnsCorrectSum() {
-        // Arrange
         int a = 2;
         int b = 4;
-
-        // Act
         int result = calculator.add(a, b);
-
-        // Assert
         assertEquals(6, result);
     }
 
@@ -54,18 +47,11 @@ public class CalculatorTest {
         assertEquals(expected, calculator.add(a, b));
     }
 
-    // ========== SUBTRACT TESTS ==========
-
     @Test
     void subtract_TwoNumbers_ReturnsCorrectDifference() {
-        // Arrange
         int a = 10;
         int b = 4;
-
-        // Act
         int result = calculator.subtract(a, b);
-
-        // Assert
         assertEquals(6, result);
     }
 
@@ -82,18 +68,11 @@ public class CalculatorTest {
         assertEquals(expected, calculator.subtract(a, b));
     }
 
-    // ========== MULTIPLY TESTS ==========
-
     @Test
     void multiply_TwoNumbers_ReturnsCorrectProduct() {
-        // Arrange
         int a = 6;
         int b = 7;
-
-        // Act
         int result = calculator.multiply(a, b);
-
-        // Assert
         assertEquals(42, result);
     }
 
@@ -110,18 +89,11 @@ public class CalculatorTest {
         assertEquals(expected, calculator.multiply(a, b));
     }
 
-    // ========== DIVIDE TESTS ==========
-
     @Test
     void divide_TwoNumbers_ReturnsCorrectQuotient() {
-        // Arrange
         int a = 7;
         int b = 2;
-
-        // Act
         double result = calculator.divide(a, b);
-
-        // Assert
         assertEquals(3.5, result);
     }
 
@@ -140,11 +112,8 @@ public class CalculatorTest {
 
     @Test
     void divide_DivideByZero_ThrowsIllegalArgumentException() {
-        // Arrange
         int a = 5;
         int b = 0;
-
-        // Act & Assert
         assertThrows(IllegalArgumentException.class, () -> {
             calculator.divide(a, b);
         });
@@ -166,17 +135,10 @@ public class CalculatorTest {
         });
     }
 
-    // ========== IS EVEN TESTS ==========
-
     @Test
     void isEven_EvenNumber_ReturnsTrue() {
-        // Arrange
         int number = 8;
-
-        // Act
         boolean result = calculator.isEven(number);
-
-        // Assert
         assertTrue(result);
     }
 
@@ -188,13 +150,8 @@ public class CalculatorTest {
 
     @Test
     void isEven_OddNumber_ReturnsFalse() {
-        // Arrange
         int number = 9;
-
-        // Act
         boolean result = calculator.isEven(number);
-
-        // Assert
         assertFalse(result);
     }
 
