@@ -14,6 +14,17 @@ public class StringValidator {
         if (input.trim().isEmpty()) {
             throw new IllegalArgumentException("Input cannot be empty.");
         }
+        
     }
-    
+
+    public boolean isPalindrome(String text) {
+        if (text == null) {
+            return false;
+        }
+
+        String cleaned = text.replaceAll(" ", "").toLowerCase();
+        String reversed = new StringBuilder(cleaned).reverse().toString();
+
+        return cleaned.equals(reversed);
+    }
 }

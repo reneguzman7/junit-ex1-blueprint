@@ -1,12 +1,18 @@
 package ec.edu.epn;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringValidatorTest {
 
@@ -62,5 +68,26 @@ public class StringValidatorTest {
     @ValueSource(strings = {"Hello", "World", "Test123", "Valid Input", "a", "123"})
     public void testValidateNotEmpty_ValidInputs_NoException(String input) {
         assertDoesNotThrow(() -> validator.validateNotEmpty(input));
+    }
+
+    @TestFactory
+    List<DynamicTest> testPalindromesDinamicos() {
+        StringValidator validator = new StringValidator();
+
+        List<Object[]> data = Arrays.asList(
+                new Object[]{"reconocer", true},
+                new Object[]{"oso", true},
+                new Object[]{"hola", false}
+        );
+        return data.stream().map(values -> 
+            DynamicTest.dynamicTest(
+                "Probando palabra: " + values[0],
+                () -> {
+                    String input = (String) values[0];
+                    boolean esperado = (boolean) values[1];
+                    assertEquals(esperado, validator.isPalindrome(input));
+                }
+            )
+        ).collect(Collectors.toList());
     }
 }

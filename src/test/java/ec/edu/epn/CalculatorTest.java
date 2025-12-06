@@ -1,9 +1,6 @@
 package ec.edu.epn;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -159,5 +156,17 @@ public class CalculatorTest {
     @ValueSource(ints = { 1, 3, 5, 7, 9, -1, -3, -5, -99, 1001 })
     void isEven_MultipleOddNumbers_ReturnsFalse(int number) {
         assertFalse(calculator.isEven(number));
+    }
+
+    @Test
+    void testDivisionConAssertAll() {
+        Calculator calculator = new Calculator();
+        double result = calculator.divide(20, 4);
+
+        assertAll("Validaciones para la división",
+                () -> assertEquals(5, result),
+                () -> assertTrue(result > 0),
+                () -> assertNotNull(result)
+        );
     }
 }
